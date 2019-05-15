@@ -39,6 +39,7 @@ function buatrp($angka){
 
 		<option value="">-Pilih-</option>
 
+		<option value="6">6 Bulan</option>
 		<option value="12">12 Bulan</option>
 
 		<option value="18">18 Bulan</option>
