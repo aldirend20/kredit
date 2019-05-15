@@ -66,7 +66,7 @@ function buatrp($angka){
 		<option value="Konsumtif">Konsumtif</option>
 	</select><br>
 	<input type="submit" name="btn-kalkulasi" class="btn btn-primary" value="Kalkulasi">
-    <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form Pengajuan</a>
+  <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form Pengajuan</a>
 
 
 
@@ -119,7 +119,7 @@ function buatrp($angka){
 <td><?= $lama_pinjaman." Bulan";?></td>
 <td><?= "<b>".$kebutuhan."</b>";?></td>
 <td><?= buatrp($hasil);?></td>
-<td><a class="btn btn-primary" href="">Ajukan Sekarang</a>
+<td><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Sekarang</a>
 <a class="btn btn-warning" href="" data-toggle="modal" data-target="#detailangsuran">Detail</a></td>
 </tr>
 </tbody>
@@ -209,7 +209,7 @@ $tot_jumlah=$hasil*$lama_pinjaman;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="" class="btn btn-primary">Ajukan Sekarang</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078" class="btn btn-primary">Ajukan Sekarang</a>
       </div>
       <?php } ?>
 
