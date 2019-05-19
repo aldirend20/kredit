@@ -262,7 +262,7 @@ function buatrp($angka){
 		<tr>
 
 			<td>0</td>
-
+$angsuran_bunga
 			<td>0</td>
 
 			<td>0</td>

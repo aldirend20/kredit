@@ -21,12 +21,12 @@ function buatrp($angka){
 
 <div class="container">
 
-<h2 class="section-title text-center"><span>Simulasi Kredit</span></h2>
+<h2 class="section-title"><span>Simulasi Kredit</span></h2>
 
 <form action="" method="POST">
 
 	<b>Jumlah Pinjaman : </b>
-	<input type="text" name="jumlah" class="form-control"  id="inputku" required/><br>
+	<input type="text" name="jumlah" class="form-control"  id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required/><br>
 	<b>Tenor : </b>
 
 	<select name="tenor" id="myPinjam" onchange="myFunction()" class="form-control" required value="">
@@ -96,13 +96,7 @@ function buatrp($angka){
     		$bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
         $angsuran_pokok = $hasil-$bunga_perbulan;
         $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
-
-        $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
-
-        $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
-    
-        $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
-                
+        
 ?>
 <table class="table table-hover">
   <thead class="thead-light">
@@ -121,69 +115,63 @@ function buatrp($angka){
 <td><?= "<b>".$kebutuhan."</b>";?></td>
 <td><?= buatrp($hasil);?></td>
 <td><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Sekarang</a>
-<a class="btn btn-warning text-light" data-toggle="modal" data-target=".bd-example-modal-lg">View</a>
-</td>
+<a class="btn btn-warning" href="" data-toggle="modal" data-target="#detailangsuran">Detail</a></td>
 </tr>
 </tbody>
 </table>
 
 
-<!-- Modal -->  
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<!-- Modal -->
+<div class="modal fade" id="detailangsuran" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header text-center">
+      <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Tabel Angsuran</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+      <table class="table table-responsive-sm table-bordered">
+  <thead>
+    <tr class="table-active">
+      <th scope="col">No.</th>
+      <th scope="col">Baki Debet</th>
+      <th scope="col">Pokok</th>
+      <th scope="col">Margin</th>
+      <th scope="col">Angsuran</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
 
-      <table class="table table-sm table-bordered table-hover">
+<td>0</td>
 
-<tr>
-<thead class="thead-dark">
-  <th>Angsuran Ke-</th>
 
-  <th>Angsuran Pokok</th>
+<td><b><?php echo buatrp($jumlah_pinjaman);?></b></td>
 
-  <th>Angsuran Bunga</th>
+<td>0</td>
 
-  <th>Total</th>
+<td>0</td>
 
-  <th>Baki Debet</th>
-</thead>
+<td>0</td>
+
+
 </tr>
-
-<tr>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td><b><?= buatrp($tot_jumlah);?></b></td>
-</tr>
-
-
-
-<?php
-
-		$jumlah = $angsuran_pokok+$angsuran_bunga;
-    $no =1;
-    $row=$jumlah_pinjaman;
-    while ( $row > 1) { $row=$row-$angsuran_pokok; ?>
+<?php $row = $lama_pinjaman; ?>
+<?php while ( $row<1) { $row=$row-$angsuran_pokok; ?>
 
 
 
 <tr>
 
-  <td><span><?php echo $no++;?></span></td>
+  <td><?php echo $row;?></td>
 
   <td><?php echo buatrp($angsuran_pokok);?></td>
 
-  <td><?php echo buatrp($bunga_perbulan);?></td>
+  <td><?php echo buatrp($angsuran_bunga);?></td>
 
-  <td><?php echo buatrp($hasil);?></td>
+  <td><?php echo buatrp($angsuran_bunga);?></td>
 
   <td><?php echo buatrp($row);?></td>
 
@@ -193,13 +181,19 @@ function buatrp($angka){
 
 <?php }
 
+$tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
+
+$tot_ang_bunga=$angsuran_bunga*$lama_pinjaman;
+
+$tot_jumlah=$jumlah*$lama_pinjaman;
+
 ?>
 
 
 
 <tr>
 
-  <td>Total</td>
+  <td></td>
 
   <td><b><?php echo buatrp($tot_ang_pokok);?></b></td>
 
@@ -207,10 +201,16 @@ function buatrp($angka){
 
   <td><b><?php echo buatrp($tot_jumlah);?></b></td>
 
-  <td><?php echo buatrp(0);?></td>
+  <td></td>
 
 </tr>
+
 </table>
+
+</div>
+
+<div class="container"><br></div>
+
 
   </div>
       <div class="modal-footer">
@@ -218,6 +218,7 @@ function buatrp($angka){
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078" class="btn btn-primary">Ajukan Sekarang</a>
       </div>
       <?php } ?>
+
     </div>
   </div>
 </div>
