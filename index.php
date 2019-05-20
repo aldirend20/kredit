@@ -5,7 +5,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
     <title>Simulasi Kredit</title>
   </head>
   <body>
@@ -103,6 +102,9 @@ function buatrp($angka){
     
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
                 
+
+
+
 ?>
 <table class="table table-hover">
   <thead class="thead-light">
@@ -139,7 +141,16 @@ function buatrp($angka){
         </button>
       </div>
       <div class="modal-body">
+<?php
 
+echo "<pre>";
+
+echo "Jumlah Pinjaman          = "."<b>".buatrp($jumlah_pinjaman)."</b>"."<br>";
+echo "Lama Pinjaman            = "."<b>".$lama_pinjaman." Bulan"."</b>"."<br>";
+echo "Angsuran Per Bulan       = "."<b>".buatrp($hasil)."</b>";
+echo "</pre>";
+
+?>
       <table class="table table-sm table-bordered table-hover">
 
 <tr>
