@@ -20,7 +20,7 @@ function buatrp($angka){
 
 
 <div class="container">
-
+<br><br>
 <h2 class="section-title text-center"><span>Simulasi Kredit</span></h2>
 
 <form action="" method="POST">
@@ -61,7 +61,7 @@ function buatrp($angka){
 		<option value="Konsumtif">Konsumtif</option>
 	</select><br>
 	<input type="submit" name="btn-kalkulasi" class="btn btn-primary" value="Kalkulasi">
-  <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form Pengajuan</a>
+  <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form</a>
 
 
 
@@ -120,7 +120,7 @@ function buatrp($angka){
 <td><?= $lama_pinjaman." Bulan";?></td>
 <td><?= "<b>".$kebutuhan."</b>";?></td>
 <td><?= buatrp($hasil);?></td>
-<td><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Sekarang</a>
+<td><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Permohonan</a>
 <a class="btn btn-warning text-light" data-toggle="modal" data-target=".bd-example-modal-lg">View</a>
 </td>
 </tr>
