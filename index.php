@@ -14,8 +14,7 @@ function buatrp($angka){
 		return $jadi;
 	}
 
-?>
-<p>test</p>
+?> 
 
 
 <div class="container">
