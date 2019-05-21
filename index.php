@@ -12,11 +12,7 @@
 function buatrp($angka){
 		$jadi ="Rp. " .number_format($angka,0,',','.');
 		return $jadi;
-	}
-
-?> 
-
-
+	}?> 
 <div class="container">
 <br><br>
 <h2 class="section-title text-center"><span>Simulasi Kredit</span></h2>
