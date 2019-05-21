@@ -157,10 +157,10 @@ function buatrp($angka){
 </tr>
 
 <tr>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
+  <td>-</td>
+  <td>-</td>
+  <td>-</td>
+  <td>-</td>
   <td><b><?= buatrp($tot_jumlah);?></b></td>
 </tr>
 
@@ -170,8 +170,8 @@ function buatrp($angka){
 
 		$jumlah = $angsuran_pokok+$angsuran_bunga;
     $no =1;
-    $row=$jumlah_pinjaman;
-    while ( $row > 1) { $row=$row-$angsuran_pokok; ?>
+    $row=$total_bayar;
+    while ( $row > 1) { $row=$row-$hasil; ?>
 
 
 
@@ -199,7 +199,7 @@ function buatrp($angka){
 
 <tr>
 
-  <td>Total</td>
+  <td>-</td>
 
   <td><b><?php echo buatrp($tot_ang_pokok);?></b></td>
 
@@ -207,7 +207,7 @@ function buatrp($angka){
 
   <td><b><?php echo buatrp($tot_jumlah);?></b></td>
 
-  <td><?php echo buatrp(0);?></td>
+  <td>-</td>
 
 </tr>
 </table>
