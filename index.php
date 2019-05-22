@@ -180,7 +180,7 @@ function buatrp($angka){
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h5 class="modal-title" id="exampleModalLabel">Tabel Angsuran</h5>
+                            <h5 class="modal-title text-center" id="exampleModalLabel">Tabel Simulasi Angsuran</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -192,7 +192,8 @@ echo "<pre>";
 echo "Jumlah Pinjaman          = "."<b>".buatrp($jumlah_pinjaman)."</b>"."<br>";
 echo "Lama Pinjaman            = "."<b>".$lama_pinjaman." Bulan"."</b>"."<br>";
 echo "Angsuran Per Bulan       = "."<b>".buatrp($hasil)."</b>"."<br>";
-echo "Total Pengembalian       = "."<b>".buatrp($tot_jumlah)."</b>";
+echo "Total Pengembalian       = "."<b>".buatrp($tot_jumlah)."</b>"."<br>";
+echo "Total Bunga              = "."<b>".buatrp($tot_ang_bunga)."</b>";
 echo "</pre>";
 
 ?>
@@ -204,8 +205,8 @@ echo "</pre>";
                                         <th>Angsuran Pokok</th>
                                         <th>Angsuran Bunga</th>
                                         <th>Total</th>
-                                        <th>Baki Debet</th>
-                                        <th>Penyusutan</th>
+                                        <th>Hutang Pokok</th>
+                                        <th>Total Hutang</th>
                                     </thead>
                                 </tr>
                                 <tr>
