@@ -141,7 +141,7 @@ function buatrp($angka){
 
 
 ?>
-            <table class="table table-hover">
+            <table class="table  table-sm table-hover">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Nominal</th>
@@ -160,7 +160,7 @@ function buatrp($angka){
                         <td>
                             <a
                                 class="btn btn-primary"
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Permohonan</a>
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan</a>
                             <a
                                 class="btn btn-warning text-light"
                                 data-toggle="modal"
