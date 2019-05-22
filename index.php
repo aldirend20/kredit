@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <title>Simulasi Kredit</title>
-  <script src="//code.angularjs.org/snapshot/angular.min.js"></script>  
+        <script src="//code.angularjs.org/snapshot/angular.min.js"></script>  
     </head>
     <body ng-app="currencyExample">
     <script>
@@ -33,7 +33,7 @@ function buatrp($angka){
                 </b>
               <div class="input-group mb-2">
             <input
-                  type="text"
+                  type=" "
                     name="jumlah"
                     class="form-control"
                     id="inputku"
