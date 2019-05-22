@@ -1,14 +1,21 @@
 <!doctype html>
 <html lang="en">
-  <head>
+    <head>
         <meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Simulasi Kredit</title>
-  </head>
-  <body>
-    <?php
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <title>Simulasi Kredit</title>
+  <script src="//code.angularjs.org/snapshot/angular.min.js"></script>  
+    </head>
+    <body ng-app="currencyExample">
+    <script>
+  angular.module('currencyExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.amount = 1234;
+    }]);
+</script>
+        <?php
 function buatrp($angka){
 		$jadi ="Rp. " .number_format($angka,0,',','.');
 		return $jadi;
@@ -16,60 +23,88 @@ function buatrp($angka){
 
 ?>
 
+        <div class="container">
+            <br><br>
+            <h2 class="section-title text-center">
+                <span>Simulasi Kredit</span></h2>
 
+            <form action="" method="POST">
+                <b>Jumlah Pinjaman :
+                </b>
+              <div class="input-group mb-2">
+            <input
+                  type="text"
+                    name="jumlah"
+                    class="form-control"
+                    id="inputku"
+                    ng-model="amount" 
+                    aria-label="amount"
+                    required="required"/>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Nominal :{{amount | currency:"Rp."}}</span>
+                </div>
+            </div>
+                <b>Tenor :
+                </b>
 
-<div class="container">
-<br><br>
-<h2 class="section-title text-center"><span>Simulasi Kredit</span></h2>
+                <select
+                    name="tenor"
+                    id="myPinjam"
+                    onchange="myFunction()"
+                    class="form-control"
+                    required="required"
+                    value="">
 
-<form action="" method="POST">
+                    <option value="">-Pilih-</option>
 
-	<b>Jumlah Pinjaman : </b>
-	<input type="text" name="jumlah" class="form-control"  id="inputku" required/><br>
-	<b>Tenor : </b>
+                    <option value="6">6 Bulan</option>
+                    <option value="12">12 Bulan</option>
 
-	<select name="tenor" id="myPinjam" onchange="myFunction()" class="form-control" required value="">
+                    <option value="18">18 Bulan</option>
 
-		<option value="">-Pilih-</option>
+                    <option value="24">24 Bulan</option>
 
-		<option value="6">6 Bulan</option>
-		<option value="12">12 Bulan</option>
+                    <option value="36">36 Bulan</option>
 
-		<option value="18">18 Bulan</option>
+                    <option value="48">48 Bulan</option>
+                </select>
+                <br>
 
-		<option value="24">24 Bulan</option>
+                <b>Tujuan Pinjaman :
+                </b>
 
-		<option value="36">36 Bulan</option>
+                <select
+                    name="kebutuhan"
+                    id="myPinjam"
+                    onchange="myFunction()"
+                    class="form-control"
+                    required="required"
+                    value="">
 
-		<option value="48">48 Bulan</option>
-	</select>
-	<br>
+                    <option value="">-Pilih-</option>
 
-	<b>Tujuan Pinjaman : </b>
+                    <option value="Modal Kerja">Modal Kerja</option>
 
-	<select name="kebutuhan" id="myPinjam" onchange="myFunction()" class="form-control" required value="">
+                    <option value="Investasi">Investasi</option>
 
-		<option value="">-Pilih-</option>
+                    <option value="Mikro">Mikro</option>
 
-		<option value="Modal Kerja">Modal Kerja</option>
+                    <option value="Konsumtif">Konsumtif</option>
+                </select><br>
+                <input
+                    type="submit"
+                    name="btn-kalkulasi"
+                    class="btn btn-primary"
+                    value="Kalkulasi">
+                <a
+                    href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf"
+                    class="btn btn-danger">Download Form</a>
 
-		<option value="Investasi">Investasi</option>
+            </form>
 
-		<option value="Mikro">Mikro</option>
+            <hr>
 
-		<option value="Konsumtif">Konsumtif</option>
-	</select><br>
-	<input type="submit" name="btn-kalkulasi" class="btn btn-primary" value="Kalkulasi">
-  <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form</a>
-
-
-
-</form>
-
-<hr>
-
-
-<?php
+        <?php
 
 	if (isset($_POST['btn-kalkulasi'])) {
 
@@ -106,134 +141,140 @@ function buatrp($angka){
 
 
 ?>
-<table class="table table-hover">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Nominal</th>
-      <th scope="col">Tenor</th>
-      <th scope="col">Tujuan</th>
-      <th scope="col">Angsuran</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-<tbody>
-<tr>
-<td><?= buatrp($jumlah_pinjaman);?></td>
-<td><?= $lama_pinjaman." Bulan";?></td>
-<td><?= "<b>".$kebutuhan."</b>";?></td>
-<td><?= buatrp($hasil);?></td>
-<td><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Permohonan</a>
-<a class="btn btn-warning text-light" data-toggle="modal" data-target=".bd-example-modal-lg">View</a>
-</td>
-</tr>
-</tbody>
-</table>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Nominal</th>
+                        <th scope="col">Tenor</th>
+                        <th scope="col">Tujuan</th>
+                        <th scope="col">Angsuran</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?= buatrp($jumlah_pinjaman);?></td>
+                        <td><?= $lama_pinjaman." Bulan";?></td>
+                        <td><?= "<b>".$kebutuhan."</b>";?></td>
+                        <td><?= buatrp($hasil);?></td>
+                        <td>
+                            <a
+                                class="btn btn-primary"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078">Ajukan Permohonan</a>
+                            <a
+                                class="btn btn-warning text-light"
+                                data-toggle="modal"
+                                data-target=".bd-example-modal-lg">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-
-<!-- Modal -->  
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h5 class="modal-title" id="exampleModalLabel">Tabel Angsuran</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-<?php
+            <!-- Modal -->
+            <div
+                class="modal fade bd-example-modal-lg"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title" id="exampleModalLabel">Tabel Angsuran</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php
 
 echo "<pre>";
 echo "Jumlah Pinjaman          = "."<b>".buatrp($jumlah_pinjaman)."</b>"."<br>";
 echo "Lama Pinjaman            = "."<b>".$lama_pinjaman." Bulan"."</b>"."<br>";
-echo "Angsuran Per Bulan       = "."<b>".buatrp($hasil)."</b>";
+echo "Angsuran Per Bulan       = "."<b>".buatrp($hasil)."</b>"."<br>";
+echo "Total Pengembalian       = "."<b>".buatrp($tot_jumlah)."</b>";
 echo "</pre>";
 
 ?>
-      <table class="table table-sm table-bordered table-hover">
+                            <table class="table table-sm table-bordered table-hover">
 
-<tr>
-<thead class="thead-dark">
-  <th>Angsuran Ke-</th>
+                                <tr>
+                                    <thead class="thead-dark">
+                                        <th>Angsuran Ke-</th>
+                                        <th>Angsuran Pokok</th>
+                                        <th>Angsuran Bunga</th>
+                                        <th>Total</th>
+                                        <th>Baki Debet</th>
+                                        <th>Penyusutan</th>
+                                    </thead>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>
+                                        <b><?= buatrp($jumlah_pinjaman);?></b>
+                                    </td>
+                                    <td>
+                                        <b><?= buatrp($tot_jumlah);?></b>
+                                    </td>
+                                </tr>
 
-  <th>Angsuran Pokok</th>
+                                <?php
 
-  <th>Angsuran Bunga</th>
+		                            $jumlah = $angsuran_pokok+$angsuran_bunga;
+                                $no =1;
+                                $row=$total_bayar;
+    $jum=$jumlah_pinjaman;
+    while ( $row > $no) { $row=$row-$hasil;$jum=$jum-$angsuran_pokok; ?>
 
-  <th>Total</th>
+                                <tr>
 
-  <th>Baki Debet</th>
-</thead>
-</tr>
+                                    <td>
+                                        <span><?php echo $no++;?></span></td>
 
-<tr>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
-  <td>-</td>
-  <td><b><?= buatrp($tot_jumlah);?></b></td>
-</tr>
+                                    <td><?php echo buatrp($angsuran_pokok);?></td>
 
+                                    <td><?php echo buatrp($bunga_perbulan);?></td>
 
+                                    <td><?php echo buatrp($hasil);?></td>
 
-<?php
+                                    <td><?php echo buatrp($jum);?></td>
+                                    <td><?php echo buatrp($row);?></td>
 
-		$jumlah = $angsuran_pokok+$angsuran_bunga;
-    $no =1;
-    $row=$total_bayar;
-    while ( $row > 1) { $row=$row-$hasil; ?>
+                                </tr>
 
-
-
-<tr>
-
-  <td><span><?php echo $no++;?></span></td>
-
-  <td><?php echo buatrp($angsuran_pokok);?></td>
-
-  <td><?php echo buatrp($bunga_perbulan);?></td>
-
-  <td><?php echo buatrp($hasil);?></td>
-
-  <td><?php echo buatrp($row);?></td>
-
-</tr>
-
-
-
-<?php }
+                                <?php }
 
 ?>
+                            </table>
 
-
-
-<tr>
-
-  <td>-</td>
-
-  <td><b><?php echo buatrp($tot_ang_pokok);?></b></td>
-
-  <td><b><?php echo buatrp($tot_ang_bunga);?></b></td>
-
-  <td><b><?php echo buatrp($tot_jumlah);?></b></td>
-
-  <td>-</td>
-
-</tr>
-</table>
-
-  </div>
-      <div class="modal-footer">
-        <a href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf" class="btn btn-danger">Download Form</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078" class="btn btn-primary">Ajukan Sekarang</a>
-      </div>
-      <?php } ?>
-    </div>
-  </div>
-</div>
-    <script src="js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+                        </div>
+                        <div class="modal-footer">
+                            <a
+                                href="http://bprhaneda.co.id/main/wp-content/uploads/2019/05/FORM-MULTIGUNA.pdf"
+                                class="btn btn-danger">Download Form</a>
+                            <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSeIdq5jGwjCm1OXVC5YOFaUWn5PU1vu5fyvEINwBJPiCJ1-DQ/viewform?fbzx=121297185286004078"
+                                class="btn btn-primary">Ajukan Sekarang</a>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <script src="js/script.js"></script>
+            <script
+                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        </body>
+    </html>
