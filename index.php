@@ -33,7 +33,7 @@ function buatrp($angka){
                 </b>
               <div class="input-group mb-2">
             <input
-                  type=" "
+                  type="text"
                     name="jumlah"
                     class="form-control"
                     id="inputku"
