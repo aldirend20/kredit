@@ -197,12 +197,11 @@ echo "Total Bunga              = "."<b>".buatrp($tot_ang_bunga)."</b>";
 echo "</pre>";
 
 ?>
-                            <table class="table table-sm table-bordered table-hover">
-
+                            <table class="table table-sm table-hover">
                                 <tr>
                                     <thead class="thead-dark">
                                         <th>Angsuran Ke-</th>
-                                        <th>Angsuran Pokok</th>
+                                        <th>sPokok</th>
                                         <th>Angsuran Bunga</th>
                                         <th>Total</th>
                                         <th>Hutang Pokok</th>
@@ -215,10 +214,10 @@ echo "</pre>";
                                     <td>-</td>
                                     <td>-</td>
                                     <td>
-                                        <b><?= buatrp($jumlah_pinjaman);?></b>
+                                        <b><pre><?= buatrp($jumlah_pinjaman);?></pre></b>
                                     </td>
                                     <td>
-                                        <b><?= buatrp($tot_jumlah);?></b>
+                                        <b><pre><?= buatrp($tot_jumlah);?></pre></b>
                                     </td>
                                 </tr>
 
@@ -232,17 +231,16 @@ echo "</pre>";
 
                                 <tr>
 
-                                    <td>
-                                        <span><?php echo $no++;?></span></td>
+                                    <td><pre><?php echo $no++;?></pre></td>
 
-                                    <td><?php echo buatrp($angsuran_pokok);?></td>
+                                    <td><pre><?php echo buatrp($angsuran_pokok);?><pre></td>
 
-                                    <td><?php echo buatrp($bunga_perbulan);?></td>
+                                    <td><pre><?php echo buatrp($bunga_perbulan);?></pre></td>
 
-                                    <td><?php echo buatrp($hasil);?></td>
+                                    <td><pre><?php echo buatrp($hasil);?></pre></td>
 
-                                    <td><?php echo buatrp($jum);?></td>
-                                    <td><?php echo buatrp($row);?></td>
+                                    <td><pre><?php echo buatrp($jum);?></pre></td>
+                                    <td><pre><?php echo buatrp($jum);?></pre></td>
 
                                 </tr>
 
