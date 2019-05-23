@@ -6,15 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <title>Simulasi Kredit</title>
-        <script src="//code.angularjs.org/snapshot/angular.min.js"></script>  
+        <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
     </head>
     <body ng-app="currencyExample">
-    <script>
-  angular.module('currencyExample', [])
-    .controller('ExampleController', ['$scope', function($scope) {
-      $scope.amount = 1234;
-    }]);
-</script>
+        <script>
+            angular
+                .module('currencyExample', [])
+                .controller('ExampleController', [
+                    '$scope',
+                    function ($scope) {
+                        $scope.amount = 1234;
+                    }
+                ]);
+        </script>
         <?php
 function buatrp($angka){
 		$jadi ="Rp. " .number_format($angka,0,',','.');
@@ -31,19 +35,19 @@ function buatrp($angka){
             <form action="" method="POST">
                 <b>Jumlah Pinjaman :
                 </b>
-              <div class="input-group mb-2">
-            <input
-                  type="text"
-                    name="jumlah"
-                    class="form-control"
-                    id="inputku"
-                    ng-model="amount" 
-                    aria-label="amount"
-                    required="required"/>
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">Nominal :{{amount | currency:"Rp."}}</span>
+                <div class="input-group mb-2">
+                    <input
+                        type="text"
+                        name="jumlah"
+                        class="form-control"
+                        id="inputku"
+                        ng-model="amount"
+                        aria-label="amount"
+                        required="required"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">Nominal :{{amount | currency:"Rp."}}</span>
+                    </div>
                 </div>
-            </div>
                 <b>Tenor :
                 </b>
 
@@ -115,9 +119,9 @@ function buatrp($angka){
 		$kebutuhan = $_POST['kebutuhan'];
 	//	$hasil=($jumlah_pinjaman * (0.3/12))/(1-((1 + (0.3/12))**($lama_pinjaman*-1)));
 		if ($jumlah_pinjaman<=5000000) {
-    $bunga_perbulan=0.36/12;
+    $bunga_bulan=0.36/12;
     $bunga_rp = $jumlah_pinjaman/0.36;
-    $angsuran_bunga=$jumlah_pinjaman*$bunga_perbulan/100;
+    $angsuran_bunga=$jumlah_pinjaman*$bunga_bulan/100;
     $angsuran_pokok = $jumlah_pinjaman/$lama_pinjaman;
     $hasil = $angsuran_pokok/0.36;
     $total_bayar = $hasil*$lama_pinjaman;    
@@ -130,6 +134,7 @@ function buatrp($angka){
     $tot_jumlah=$angsuran_bunga*$lama_pinjaman;  
     }elseif ($jumlah_pinjaman<=15000000) {
 		$hasil=($jumlah_pinjaman * (0.36/12))/(1-((1 + (0.36/12))**($lama_pinjaman*-1)));
+        $bunga_bulan=0.36/12;
         $total_bayar = $hasil*$lama_pinjaman;
         $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
         $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
@@ -140,6 +145,7 @@ function buatrp($angka){
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
     } elseif ($jumlah_pinjaman<=50000000){
 		$hasil=($jumlah_pinjaman * (0.30/12))/(1-((1 + (0.30/12))**($lama_pinjaman*-1)));
+        $bunga_bulan=0.30/12;
         $total_bayar = $hasil*$lama_pinjaman;
         $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
         $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
@@ -150,6 +156,7 @@ function buatrp($angka){
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
     }elseif ($jumlah_pinjaman<=300000000){
 		$hasil=($jumlah_pinjaman * (0.27/12))/(1-((1 + (0.27/12))**($lama_pinjaman*-1)));
+        $bunga_bulan=0.27/12;
         $total_bayar = $hasil*$lama_pinjaman;
         $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
         $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
@@ -160,6 +167,7 @@ function buatrp($angka){
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
     }elseif($jumlah_pinjaman<=500000000){
 		$hasil=($jumlah_pinjaman * (0.24/12))/(1-((1 + (0.24/12))**($lama_pinjaman*-1)));
+        $bunga_bulan=0.24/12;
         $total_bayar = $hasil*$lama_pinjaman;
         $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
         $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
@@ -170,8 +178,6 @@ function buatrp($angka){
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;    
     }
 ?>
-
-<?= var_dump($angsuran_pokok);?>
             <table class="table  table-sm table-hover">
                 <thead class="thead-light">
                     <tr>
@@ -245,39 +251,77 @@ echo "</pre>";
                                     <td>-</td>
                                     <td>-</td>
                                     <td>
-                                        <b><pre><?= buatrp($jumlah_pinjaman);?></pre></b>
+                                        <b>
+                                            <pre><?= buatrp($jumlah_pinjaman);?></pre>
+                                        </b>
                                     </td>
                                     <td>
-                                        <b><pre><?= buatrp($tot_jumlah);?></pre></b>
+                                        <b>
+                                            <pre><?= buatrp($tot_jumlah);?></pre>
+                                        </b>
                                     </td>
                                 </tr>
-
+                            
                                 <?php
-
-		                            $jumlah = $angsuran_pokok+$angsuran_bunga;
+                                $jumlah = $angsuran_pokok+$angsuran_bunga;
                                 $no =1;
                                 $row=$total_bayar;
-    $jum=$jumlah_pinjaman;
-    while ( $row > $no) { $row=$row-$hasil;$jum=$jum-$angsuran_pokok; ?>
-
-                                <tr>
-
-                                    <td><pre><?php echo $no++;?></pre></td>
-
-                                    <td><pre><?php echo buatrp($angsuran_pokok);?><pre></td>
-
-                                    <td><pre><?php echo buatrp($bunga_perbulan);?></pre></td>
-
-                                    <td><pre><?php echo buatrp($hasil);?></pre></td>
-
-                                    <td><pre><?php echo buatrp($jum);?></pre></td>
-                                    <td><pre><?php echo buatrp($jum);?></pre></td>
-
-                                </tr>
-
-                                <?php }
-
-?>
+                                $jum=$jumlah_pinjaman;
+                                ?>
+                                <?php if ($jumlah_pinjaman<=5000000) {
+                                 $pengurangan=$hasil/12*$bunga_bulan*10;
+                                while ( $row > $no) { $row=$row-$hasil;$jum=$jum-$angsuran_pokok;?>
+                                    <tr>
+    
+                                        <td>
+                                            <pre><?php echo $no++;?></pre>
+                                        </td>
+                                        <td>
+                                            <pre><?php echo buatrp($angsuran_pokok);?><pre></td>
+                                        <td><pre><?php echo buatrp($bunga_perbulan);?></pre>
+                                        </td>
+                                        <td><pre><?php echo buatrp($hasil);?></pre></td>
+                                        <td>
+                                            <pre><?php echo buatrp($jum);?></pre>
+                                        </td>
+                                        <td>
+                                            <pre><?php echo buatrp($row);?></pre>
+                                        </td>
+    
+                                    </tr>
+    
+                                    <?php }?>
+    
+    <?php
+                            } else {
+                                $pengurangan=$hasil/12*$bunga_bulan*10; 
+                                $angsuran_p =$angsuran_pokok;
+                                $angsuran_b =$angsuran_bunga;   
+                                while ( $row > $no) { $row=$row-$hasil;$jum=$jum-$angsuran_pokok;$angsuran_p=$angsuran_p-$pengurangan;
+                                    $angsuran_b=$angsuran_b+$pengurangan;
+                                ?>
+                                    <tr>
+    
+                                        <td>
+                                            <pre><?php echo $no++;?></pre>
+                                        </td>
+                                        <td>
+                                            <pre><?php echo buatrp($angsuran_p);?><pre></td>
+                                        <td><pre><?php echo buatrp($angsuran_b);?></pre>
+                                        </td>
+                                        <td><pre><?php echo buatrp($hasil);?></pre></td>
+                                        <td>
+                                            <pre><?php echo buatrp($jum);?></pre>
+                                        </td>
+                                        <td>
+                                            <pre><?php echo buatrp($row);?></pre>
+                                        </td>
+    
+                                    </tr>
+    
+                                    <?php }?>
+                            <?php }?>
+                                
                             </table>
 
                         </div>
