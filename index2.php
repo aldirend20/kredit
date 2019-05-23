@@ -82,50 +82,7 @@ function buatrp($angka){
 
 	<b>Jumlah Pinjaman : </b>
 
-	<select name="jumlah" id="" class="form-control" required>
-
-		<option value="">-Pilih-</option>
-
-		<option value="10000000"><?php echo buatrp(10000000);?></option>
-
-		<option value="15000000"><?php echo buatrp(15000000);?></option>
-
-		<option value="20000000"><?php echo buatrp(20000000);?></option>
-
-		<option value="25000000"><?php echo buatrp(25000000);?></option>
-
-		<option value="30000000"><?php echo buatrp(30000000);?></option>
-
-		<option value="35000000"><?php echo buatrp(35000000);?></option>
-
-		<option value="40000000"><?php echo buatrp(40000000);?></option>
-
-		<option value="45000000"><?php echo buatrp(45000000);?></option>
-
-		<option value="50000000"><?php echo buatrp(50000000);?></option>
-
-		<option value="55000000"><?php echo buatrp(55000000);?></option>
-
-		<option value="60000000"><?php echo buatrp(60000000);?></option>
-
-		<option value="65000000"><?php echo buatrp(65000000);?></option>
-
-		<option value="70000000"><?php echo buatrp(70000000);?></option>
-
-		<option value="75000000"><?php echo buatrp(75000000);?></option>
-
-		<option value="80000000"><?php echo buatrp(80000000);?></option>
-
-		<option value="85000000"><?php echo buatrp(85000000);?></option>
-
-		<option value="90000000"><?php echo buatrp(90000000);?></option>
-
-		<option value="95000000"><?php echo buatrp(95000000);?></option>
-
-		<option value="100000000"><?php echo buatrp(100000000);?></option>
-
-	</select>
-
+	<input type="text" name="jumlah" id="" class="form-control" required>
 	<br>
 
 	<b>Lama Peminjaman : </b>
@@ -186,7 +143,7 @@ function buatrp($angka){
 
 		}elseif ($lama_pinjaman==60) {
 
-			$bunga_pertahun=15.36;
+			$bunga_pertahun=0.36;
 
 		}elseif ($lama_pinjaman==72) {
 

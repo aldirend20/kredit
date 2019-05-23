@@ -67,6 +67,8 @@ function buatrp($angka){
                     <option value="36">36 Bulan</option>
 
                     <option value="48">48 Bulan</option>
+
+                    <option value="60">60 Bulan</option>
                 </select>
                 <br>
 
@@ -113,34 +115,63 @@ function buatrp($angka){
 		$kebutuhan = $_POST['kebutuhan'];
 	//	$hasil=($jumlah_pinjaman * (0.3/12))/(1-((1 + (0.3/12))**($lama_pinjaman*-1)));
 		if ($jumlah_pinjaman<=5000000) {
-      $hasil=($jumlah_pinjaman * (0.36/12))/(1-((1 + (0.36/12))**($lama_pinjaman*-1)));
+    $bunga_perbulan=0.36/12;
+    $bunga_rp = $jumlah_pinjaman/0.36;
+    $angsuran_bunga=$jumlah_pinjaman*$bunga_perbulan/100;
+    $angsuran_pokok = $jumlah_pinjaman/$lama_pinjaman;
+    $hasil = $angsuran_pokok/0.36;
+    $total_bayar = $hasil*$lama_pinjaman;    
+    $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
+    $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
+    $angsuran_pokok = $hasil-$bunga_perbulan;
+    $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
+    $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
+    $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
+    $tot_jumlah=$angsuran_bunga*$lama_pinjaman;  
     }elseif ($jumlah_pinjaman<=15000000) {
 		$hasil=($jumlah_pinjaman * (0.36/12))/(1-((1 + (0.36/12))**($lama_pinjaman*-1)));
-		} elseif ($jumlah_pinjaman<=50000000){
-		$hasil=($jumlah_pinjaman * (0.30/12))/(1-((1 + (0.30/12))**($lama_pinjaman*-1)));
-		}elseif ($jumlah_pinjaman<=300000000){
-		$hasil=($jumlah_pinjaman * (0.27/12))/(1-((1 + (0.27/12))**($lama_pinjaman*-1)));
-		}elseif($jumlah_pinjaman<=500000000){
-		$hasil=($jumlah_pinjaman * (0.24/12))/(1-((1 + (0.24/12))**($lama_pinjaman*-1)));
-		}
-		
-
         $total_bayar = $hasil*$lama_pinjaman;
         $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
-    		$bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
+        $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
         $angsuran_pokok = $hasil-$bunga_perbulan;
         $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
-
         $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
-
         $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
-    
         $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
-                
-
-
-
+    } elseif ($jumlah_pinjaman<=50000000){
+		$hasil=($jumlah_pinjaman * (0.30/12))/(1-((1 + (0.30/12))**($lama_pinjaman*-1)));
+        $total_bayar = $hasil*$lama_pinjaman;
+        $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
+        $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
+        $angsuran_pokok = $hasil-$bunga_perbulan;
+        $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
+        $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
+        $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
+        $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
+    }elseif ($jumlah_pinjaman<=300000000){
+		$hasil=($jumlah_pinjaman * (0.27/12))/(1-((1 + (0.27/12))**($lama_pinjaman*-1)));
+        $total_bayar = $hasil*$lama_pinjaman;
+        $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
+        $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
+        $angsuran_pokok = $hasil-$bunga_perbulan;
+        $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
+        $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
+        $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
+        $tot_jumlah=$angsuran_bunga*$lama_pinjaman;
+    }elseif($jumlah_pinjaman<=500000000){
+		$hasil=($jumlah_pinjaman * (0.24/12))/(1-((1 + (0.24/12))**($lama_pinjaman*-1)));
+        $total_bayar = $hasil*$lama_pinjaman;
+        $bunga_pertahun = $total_bayar-$jumlah_pinjaman;
+        $bunga_perbulan = $bunga_pertahun/$lama_pinjaman;
+        $angsuran_pokok = $hasil-$bunga_perbulan;
+        $angsuran_bunga = $angsuran_pokok+$bunga_perbulan;
+        $tot_ang_pokok=$angsuran_pokok*$lama_pinjaman;
+        $tot_ang_bunga=$bunga_perbulan*$lama_pinjaman;
+        $tot_jumlah=$angsuran_bunga*$lama_pinjaman;    
+    }
 ?>
+
+<?= var_dump($angsuran_pokok);?>
             <table class="table  table-sm table-hover">
                 <thead class="thead-light">
                     <tr>
