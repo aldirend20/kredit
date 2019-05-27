@@ -91,18 +91,23 @@
             //	$hasil=($jumlah_pinjaman * (0.3/12))/(1-((1 + (0.3/12))**($lama_pinjaman*-1)));
             if ($jumlah_pinjaman <= 5000000) {
                 $bunga_bulan = 0.36 / 12;
+                $bunga_tahun = 0.36;
                 $hasil = ($jumlah_pinjaman * (0.36 / 12)) / (1 - ((1 + (0.36 / 12)) ** ($lama_pinjaman * -1)));
             } elseif ($jumlah_pinjaman <= 15000000) {
                 $bunga_bulan = 0.36 / 12;
+                $bunga_tahun = 0.36;
                 $hasil = ($jumlah_pinjaman * (0.36 / 12)) / (1 - ((1 + (0.36 / 12)) ** ($lama_pinjaman * -1)));
             } elseif ($jumlah_pinjaman <= 50000000) {
                 $bunga_bulan = 0.30 / 12;
-                $hasil = ($jumlah_pinjaman * (0.36 / 12)) / (1 - ((1 + (0.36 / 12)) ** ($lama_pinjaman * -1)));
+                $bunga_tahun = 0.30;
+                $hasil = ($jumlah_pinjaman * (0.30 / 12)) / (1 - ((1 + (0.30 / 12)) ** ($lama_pinjaman * -1)));
             } elseif ($jumlah_pinjaman <= 300000000) {
                 $bunga_bulan = 0.27 / 12;
+                $bunga_tahun = 0.27;
                 $hasil = ($jumlah_pinjaman * (0.27 / 12)) / (1 - ((1 + (0.27 / 12)) ** ($lama_pinjaman * -1)));
             } else {
                 $bunga_bulan = 0.24 / 12;
+                $bunga_tahun = 0.24;
                 $hasil = ($jumlah_pinjaman * (0.24 / 12)) / (1 - ((1 + (0.24 / 12)) ** ($lama_pinjaman * -1)));
             }
             if ($jumlah_pinjaman <= 5000000) {
@@ -235,7 +240,7 @@
                                     $angsuran_p = $angsuran_pokok;
                                     $bunga_b = $bunga_perbulan;
                                     while ($row > $no) {
-                                        $pengurangan = $angsuran_p / 12 * 0.36;
+                                        $pengurangan = $angsuran_p / 12 * $bunga_tahun;
                                         $row = $row - $hasil;
                                         $jum = $jum - $angsuran_p;
                                         $bunga_b = $bunga_b - $pengurangan;
